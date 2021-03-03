@@ -1,0 +1,6 @@
+Use cases for OLDR |
+-------------------|
+Analysis of:
+	- Comments/ posts on social media: Many times, when an user posts something on social media, it is really important for the admins to know if the posts respects all the guidelines. 
+	- Mails: For example, if two employees exchange e-mails, they should keep in mind that they need to use a certain kind of language.
+	- Scientific articles: Same as the Mails, the creator of the artciles should use a certain kind of language.
