@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup as bsoup
 # for YT, Facebook and Twitter, they are dinamically generated and BeautifulSoup will not be able
 # to grab text content from them.
 
-myurl = 'https://ro.wikipedia.org/wiki/Rom%C3%A2nia'
+myurl = input("Enter URL:\n")
 
 client = urlopen(myurl)
 page_html = client.read()
