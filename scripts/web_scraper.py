@@ -16,6 +16,19 @@ page_soup = bsoup(page_html, "html.parser")
 # taking the content that we need
 paragraphs = page_soup.findAll("p")
 
+def elim_diacritics(text):
+    text = text.replace('â', 'a')
+    text = text.replace('ă', 'a')
+    text = text.replace('Ă', 'A')
+    text = text.replace('Â', 'A')
+    text = text.replace('î', 'i')
+    text = text.replace('Î', 'I')
+    text = text.replace('ț', 't')
+    text = text.replace('Ț', 'T')
+    text = text.replace('ș', 's')
+    text = text.replace('Ș', 'S')
+    return text
+
 def cleanup(text):
     setter = 0
     new_string = ''
@@ -29,4 +42,4 @@ def cleanup(text):
                 new_string = new_string + text[i]
     return new_string
 
-print(cleanup(str(paragraphs)))
+print(elim_diacritics(cleanup(str(paragraphs))))
