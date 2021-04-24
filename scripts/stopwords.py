@@ -48,9 +48,7 @@ def cleanup(text):
                 new_string = new_string + text[i]
     return new_string
 
-def mainfunc(text):
-    checker = 0
-
+def elim_sw(text):
     filtered_text = elim_noise(elim_diacritics(cleanup(str(text))))
 
     stop_words = set(stopwords.words('romanian'))
@@ -70,13 +68,12 @@ def mainfunc(text):
     for w in word_tokens:
         if w not in stop_words:
             if w != "„" and w != "”" and w != "«" and w != "»" and w != "[" and w != "]" and w != "…" and w != "km²":
-                if len(stm.stem(w)) > 1:
-                    clean_output.append(stm.stem(w))
-                if checker == 0:
-                    checker = 1
+                clean_output.append(w.lower())
 
-    output = pd.DataFrame(clean_output, columns=['Words'])
-    output.to_csv('train_data.csv', index=False)
+    return clean_output
 
-    if checker == 1:
-        print("\nDone with succes! Check the output file!\n")
+def mainfunc(text):
+    output_text = elim_sw(text)
+
+    output = pd.DataFrame(output_text, columns=['word'])
+    output.to_csv('obtained_data.csv', index=False)

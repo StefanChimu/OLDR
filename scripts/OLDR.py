@@ -1,6 +1,9 @@
 import web_scraper as ws
 from subprocess import call
 import yt_scraper as ys
+import stopwords as sw
+import test_acc as accuracy
+import training as t
 
 option = 0
 
@@ -32,18 +35,23 @@ class CallPy(object):
         call([ "{}".format(self.path)])
 
 menu()
+t.train()
 
 if option == 1:
     text=input("Enter the text bellow:\n")
-    print(text) # will call stopwords script and csv output
+    sw.mainfunc(text)
+    accuracy.nn_info()
+
 elif option  == 2:
     url = input("Enter the URL here: ")
     url = elim_diacritics_url(url)
     domain = domain_name(url)
     if domain == "youtube":
         ys.scrap_yt(url)
+        accuracy.nn_info()
     else:
         ws.scrap_web(url)
+        accuracy.nn_info()
 elif option == 3:
     exit()
 else:
