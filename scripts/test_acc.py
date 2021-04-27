@@ -12,7 +12,7 @@ def nn_info():
     if is_offensive == 1:
         probabilities = predict_prob(texts)
         for i in range (0, len(probabilities)):
-            if probabilities[i] >= 0.5:
+            if probabilities[i] >= 0.8:
                 print("Word: " + str(texts[i]) + " is detected as offensive with the prob: " + str(probabilities[i]))
     else:
         print("There are no offensive words in the given dataset!")
@@ -32,12 +32,10 @@ def test_acc_on_trained_dataset():
             default_off_count += 1
 
     for i in range (0, len(probabilities)):
-        if probabilities[i] >= 0.5:
+        if probabilities[i] >= 0.9:
             training_model_off_count += 1
             probs_arr.append(1)
         else:
             probs_arr.append(0)
     print("Offensive labels count: " + str(default_off_count) + "; Number of offensive words found: " + str(training_model_off_count))
     print(accuracy_score(y, probs_arr))
-
-test_acc_on_trained_dataset()

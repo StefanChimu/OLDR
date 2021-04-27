@@ -35,17 +35,18 @@ class CallPy(object):
         call([ "{}".format(self.path)])
 
 menu()
-t.train()
 
 if option == 1:
     text=input("Enter the text bellow:\n")
     sw.mainfunc(text)
+    t.train()
     accuracy.nn_info()
 
 elif option  == 2:
     url = input("Enter the URL here: ")
     url = elim_diacritics_url(url)
     domain = domain_name(url)
+    t.train()
     if domain == "youtube":
         ys.scrap_yt(url)
         accuracy.nn_info()
