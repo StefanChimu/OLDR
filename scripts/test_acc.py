@@ -6,14 +6,16 @@ import numpy as np
 def nn_info():
     data = pd.read_csv('obtained_data.csv')
     texts = data['word'].astype(str)
-
+    new_output = []
     is_offensive = max(predict(texts))
 
     if is_offensive == 1:
         probabilities = predict_prob(texts)
         for i in range (0, len(probabilities)):
-            if probabilities[i] >= 0.8:
-                print("Word: " + str(texts[i]) + " is detected as offensive with the prob: " + str(probabilities[i]))
+            if probabilities[i] >= 0.85:
+                new_output.append(("Word: " + str(texts[i]) +" is detected as offensive with the prob: ", str(probabilities[i])))
+                output = pd.DataFrame(new_output, columns=['text', 'prob'])
+                output.to_csv('Result.csv', index=False)
     else:
         print("There are no offensive words in the given dataset!")
 
