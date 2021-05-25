@@ -25,7 +25,7 @@ def train():
     # Vectorize the text - TF-IDF
     print("[log] Vectorizing (TF-IDF) ...")
     vectorizer = TfidfVectorizer()
-    X = vectorizer.fit_transform(texts)
+    X = vectorizer.fit_transform(texts) 
     print("[log] Vectorizing - Done!")
 
     # Train the model

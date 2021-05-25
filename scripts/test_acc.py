@@ -1,5 +1,8 @@
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
 from make_prediction import predict, predict_prob
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import f1_score
 import pandas as pd
 import numpy as np
 
@@ -14,8 +17,9 @@ def nn_info():
         for i in range (0, len(probabilities)):
             if probabilities[i] >= 0.85:
                 new_output.append((str(texts[i]), str(probabilities[i])))
-                output = pd.DataFrame(new_output, columns=['text', 'offensive_prob'])
-                output.to_csv('Result.csv', index=False)
+                output = pd.DataFrame(new_output, columns=['text', 'offensiveness'])
+                output.to_csv('result.csv', index=False)
+        print("[log] Done! Check the result.csv file.")
     else:
         print("There are no offensive words in the given dataset!")
 
@@ -39,5 +43,9 @@ def test_acc_on_trained_dataset():
             probs_arr.append(1)
         else:
             probs_arr.append(0)
+            
     print("Offensive labels count: " + str(default_off_count) + "; Number of offensive words found: " + str(training_model_off_count))
-    print(accuracy_score(y, probs_arr))
+    print("Accuracy: " + str(accuracy_score(y, probs_arr)))
+    print("Precision: " + str(precision_score(y, probs_arr, average='macro')))
+    print("F1: " + str(f1_score(y, probs_arr, average='macro')))
+    print("Recall: " + str(recall_score(y, probs_arr, average='macro')))

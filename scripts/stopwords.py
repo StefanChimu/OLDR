@@ -69,11 +69,9 @@ def elim_sw(text):
         if w not in stop_words:
             if w != "„" and w != "”" and w != "«" and w != "»" and w != "[" and w != "]" and w != "…" and w != "km²":
                 clean_output.append(w.lower())
-
     return clean_output
 
 def mainfunc(text):
     output_text = elim_sw(text)
-
     output = pd.DataFrame(output_text, columns=['word'])
     output.to_csv('obtained_data.csv', index=False)

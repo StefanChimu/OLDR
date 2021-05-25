@@ -1,5 +1,8 @@
 import numpy as np
 import joblib
+import training as t
+import os.path
+from os import path
 
 vectorizer = joblib.load('vectorizer.joblib')
 model = joblib.load('model.joblib')

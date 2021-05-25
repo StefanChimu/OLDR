@@ -1,3 +1,7 @@
+'''README'''
+'''OLDR.py script is only for debugging purposes because
+it doesn't trigger the GUI - For normal use, use interface.py'''
+
 import web_scraper as ws
 from subprocess import call
 import yt_scraper as ys
@@ -39,14 +43,12 @@ menu()
 if option == 1:
     text=input("Enter the text bellow:\n")
     sw.mainfunc(text)
-    t.train()
     accuracy.nn_info()
 
 elif option  == 2:
     url = input("Enter the URL here: ")
     url = elim_diacritics_url(url)
     domain = domain_name(url)
-    t.train()
     if domain == "youtube":
         ys.scrap_yt(url)
         accuracy.nn_info()
