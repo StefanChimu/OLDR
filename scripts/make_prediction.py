@@ -15,3 +15,9 @@ def predict(texts):
 
 def predict_prob(texts):
     return np.apply_along_axis(offensive_prob, 1, model.predict_proba(vectorizer.transform(texts)))
+
+def predict_NB(texts):
+    return model.predict(vectorizer.transform(texts).toarray())
+
+def predict_prob_NB(texts):
+    return np.apply_along_axis(offensive_prob, 1, model.predict_proba(vectorizer.transform(texts).toarray()))
