@@ -28,11 +28,9 @@ def click1():
     url = elim_diacritics_url(link)
     domain = domain_name(link)
     if domain == "youtube":
-        t.train()
         yt.scrap_yt(link)
         accuracy.nn_info()
     else:
-        t.train()
         wb.scrap_web(link)
         accuracy.nn_info()
     myLabel=Label(bottomframe, text="You choose the URL option", fg = "red",font= ('times', 16, 'italic'))
@@ -42,7 +40,6 @@ def click1():
 def click2():
     text=entry.get()
     sw.mainfunc(text)
-    t.train()
     accuracy.nn_info()
     myLabel = Label(bottomframe, text="You choose the Keyboard option", fg="red", font=('times', 16, 'italic'))
     myLabel.pack(pady=10)
