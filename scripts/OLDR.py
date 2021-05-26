@@ -8,8 +8,6 @@ import yt_scraper as ys
 import stopwords as sw
 import test_acc as accuracy
 import training as t
-import os
-from os import path
 
 option = 0
 classifier = 0
@@ -40,9 +38,6 @@ def domain_name(url):
     return url.split("www.")[-1].split("//")[-1].split(".")[0]
 
 def choose_classifier(classifier):
-    if path.exists("model.joblib") == True and path.exists("vectorizer.joblib") == True:
-        os.remove("model.joblib")
-        os.remove("vectorizer.joblib")
     if classifier == 1:
         t.train_SVC()
         accuracy.nn_info("SVC")

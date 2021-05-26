@@ -51,7 +51,7 @@ def test_acc_on_trained_dataset(classifier):
             default_off_count += 1
 
     for i in range (0, len(probabilities)):
-        if probabilities[i] >= 0.8:
+        if probabilities[i] >= 0.85:
             training_model_off_count += 1
             probs_arr.append(1)
         else:
