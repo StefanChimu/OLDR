@@ -7,7 +7,6 @@ import time
 import test_acc as accuracy
 import training as t
 import string
-import charts as ch
 
 root = Tk()
 root.geometry("600x400")
@@ -28,9 +27,6 @@ def elim_diacritics_url(text):
 
 Label(root, text="OLDR", fg="red", font=('times', 24, 'italic')).pack()
 Label(root, text="", fg="red").pack()
-
-def chart():
-    print()
 
 def choose_classifier(classifier):
     if classifier == "LinearSVC":
@@ -91,7 +87,7 @@ button1 = Button(topframe, text="Search after URL", bg='black', fg='white', comm
 button1.pack(side=LEFT)
 button2 = Button(topframe, text="Search from Keyboard", bg='black', fg='white', command=click2)
 button2.pack(side=RIGHT)
-button3 = Button(topframe, text="Graphic", bg='black', fg='white', command=chart())
+button3 = Button(topframe, text="Graphic", bg='black', fg='white')
 button3.pack()
 
 topframe.pack(side=TOP)
